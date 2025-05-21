@@ -1,6 +1,6 @@
 ﻿namespace CleanCodeMethods
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             btn_Notification = new Button();
+            btn_SMS = new Button();
             SuspendLayout();
             // 
             // btn_Notification
             // 
-            btn_Notification.Location = new Point(118, 267);
+            btn_Notification.Location = new Point(12, 57);
             btn_Notification.Name = "btn_Notification";
             btn_Notification.Size = new Size(140, 35);
             btn_Notification.TabIndex = 0;
@@ -41,13 +42,24 @@
             btn_Notification.UseVisualStyleBackColor = true;
             btn_Notification.Click += btn_Notification_Click;
             // 
-            // Form1
+            // btn_SMS
+            // 
+            btn_SMS.Location = new Point(214, 57);
+            btn_SMS.Name = "btn_SMS";
+            btn_SMS.Size = new Size(140, 35);
+            btn_SMS.TabIndex = 1;
+            btn_SMS.Text = "Send SMS";
+            btn_SMS.UseVisualStyleBackColor = true;
+            btn_SMS.Click += btn_SMS_Click;
+            // 
+            // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(375, 314);
+            Controls.Add(btn_SMS);
             Controls.Add(btn_Notification);
-            Name = "Form1";
+            Name = "Main";
             Text = "Form1";
             ResumeLayout(false);
         }
@@ -55,5 +67,6 @@
         #endregion
 
         private Button btn_Notification;
+        private Button btn_SMS;
     }
 }
