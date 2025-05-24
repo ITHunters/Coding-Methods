@@ -1,3 +1,6 @@
+using Microsoft.Extensions.DependencyInjection;
+using NotificationService;
+using NotificationService.DTO;
 using System.Net.Mail;
 
 namespace CleanCodeMethods
@@ -10,20 +13,24 @@ namespace CleanCodeMethods
         [STAThread]
         static void Main()
         {
-            //var services = new ServiceCollection();
+            var services = new ServiceCollection();
 
-            //// Register services
-            //services.AddScoped<INotificationService<EmailMessage>, EmailService>();
-            //services.AddScoped<INotificationService<SmsMessage>, SmsService>();
+            // Register services
+             services.AddSingleton<INotification<SMSDTO>, SMSService>();
 
-            //var serviceProvider = services.BuildServiceProvider();
+            // Register Form
+             services.AddTransient<Main>();
 
+            
             System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
 
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            // Build provider
+            var provider = services.BuildServiceProvider();
+
+            // Run app
             ApplicationConfiguration.Initialize();
-            Application.Run(new Main());
+            var form = provider.GetRequiredService<Main>();
+            Application.Run(form);
         }
     }
 }

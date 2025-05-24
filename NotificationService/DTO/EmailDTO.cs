@@ -21,12 +21,16 @@ namespace NotificationService.DTO
         [Required]
         public string Body { get; }
 
-        public EmailDTO(string _to, string _from, string _subject, string _body)
+        [Required]
+        public string EmailSignature { get; }
+
+        public EmailDTO(string _to, string _from, string _subject, string _body, string emailSignature)
         {
             To = _to;
             From = _from;
             Subject = _subject;
             Body = _body;
+            EmailSignature = emailSignature;
         }
 
     }
